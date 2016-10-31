@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:victor="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/pts_content_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        victor:pstTabTextSize="16sp"
+        victor:pstTabTextColor="@color/left_menu_text"
+        victor:pstSelectedTabTextColor="@color/green"
+        victor:pstSelectedTabTextSize="18sp"
+        victor:pstsIndicatorColor="@color/green"
+        victor:pstsIndicatorHeight="3dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

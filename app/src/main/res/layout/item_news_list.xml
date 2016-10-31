@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/iv_news_icon"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon_demo"/>
+
+    <TextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:layout_toRightOf="@id/iv_news_icon"
+        android:layout_alignTop="@id/iv_news_icon"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题"/>
+
+    <TextView
+        android:id="@+id/tv_news_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/tv_news_title"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/iv_news_icon"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"/>
+
+
+    <TextView
+        android:id="@+id/tv_news_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="11sp"
+        android:layout_toRightOf="@id/iv_news_icon"
+        android:layout_alignBottom="@id/iv_news_icon"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="2016-07-05"/>
+
+    <TextView
+        android:id="@+id/tv_news_rcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="11sp"
+        android:layout_toLeftOf="@+id/iv_news_rcount"
+        android:layout_alignBottom="@id/iv_news_icon"
+        android:singleLine="true"
+        android:text="评论：3224"/>
+
+    <ImageView
+        android:id="@+id/iv_news_rcount"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/iv_news_icon"
+        android:src="@mipmap/icon_news_recommend"/>
+
+
+</RelativeLayout>

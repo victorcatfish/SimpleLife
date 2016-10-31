@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/iv_book_cover"
+        android:layout_width="80dp"
+        android:layout_height="115dp"
+        android:layout_marginRight="8dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/book_cover"/>
+
+    <TextView
+        android:id="@+id/tv_book_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:layout_toRightOf="@id/iv_book_cover"
+        android:layout_alignTop="@id/iv_book_cover"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="标题"/>
+
+    <TextView
+        android:id="@+id/tv_book_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/tv_book_name"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/iv_book_cover"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="作者"/>
+
+    <TextView
+        android:id="@+id/tv_book_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/tv_book_author"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/iv_book_cover"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@android:color/darker_gray"
+        android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"/>
+
+
+    <TextView
+        android:id="@+id/tv_book_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="11sp"
+        android:layout_toRightOf="@id/iv_book_cover"
+        android:layout_alignBottom="@id/iv_book_cover"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="@string/read_count"/>
+
+    <TextView
+        android:id="@+id/tv_book_read_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="11sp"
+        android:layout_toRightOf="@+id/tv_book_read"
+        android:layout_alignBottom="@id/iv_book_cover"
+        android:singleLine="true"
+        android:text="3224"/>
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/iv_book_cover"
+        android:background="@drawable/selector_read_button"
+        android:textSize="12sp"
+        android:text="@string/read_free"
+        android:textColor="@color/dark_gray"
+        android:focusable="false"
+        android:clickable="true"/>
+
+
+</RelativeLayout>

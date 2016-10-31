@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\res"/><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\build\generated\res\rs\release"/><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\build\generated\res\resValues\release"/></dataSet><dataSet config="release$Generated" generated="true"><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\src\release\res"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\res"><file name="background_tab" path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\res\drawable\background_tab.xml" qualifiers="" type="drawable"/><file path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\res\values\attrs.xml" qualifiers=""><declare-styleable name="PagerSlidingTabStrip">
+        <attr format="color" name="pstsIndicatorColor"/>
+        <attr format="color" name="pstsUnderlineColor"/>
+        <attr format="color" name="pstsDividerColor"/>
+        <attr format="dimension" name="pstsIndicatorHeight"/>
+        <attr format="dimension" name="pstsUnderlineHeight"/>
+        <attr format="dimension" name="pstsDividerPadding"/>
+        <attr format="dimension" name="pstsTabPaddingLeftRight"/>
+        <attr format="dimension" name="pstsScrollOffset"/>
+        <attr format="reference" name="pstsTabBackground"/>
+        <attr format="boolean" name="pstsShouldExpand"/>
+        <attr format="boolean" name="pstsTextAllCaps"/>
+
+        <!--added by victor begin-->
+        <attr format="dimension" name="pstTabTextSize"/>
+        <attr format="color" name="pstTabTextColor"/>
+        <attr format="dimension" name="pstSelectedTabTextSize"/>
+        <attr format="color" name="pstSelectedTabTextColor"/>
+        <!--added by victor end-->
+    </declare-styleable></file><file path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\res\values\colors.xml" qualifiers=""><color name="background_tab_pressed">#6633B5E5</color></file></source><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\build\generated\res\rs\release"/><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\build\generated\res\resValues\release"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="E:\AndroidStudioProjects\SimpleLife\PagerSlidingTabStrip\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="color" name="pstsUnderlineColor"/><attr format="color" name="pstsDividerColor"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="dimension" name="pstsScrollOffset"/><attr format="reference" name="pstsTabBackground"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsTextAllCaps"/><attr format="dimension" name="pstTabTextSize"/><attr format="color" name="pstTabTextColor"/><attr format="dimension" name="pstSelectedTabTextSize"/><attr format="color" name="pstSelectedTabTextColor"/></declare-styleable></configuration></mergedItems></merger>

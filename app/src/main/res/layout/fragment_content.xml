@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.victor.simplelife.widget.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/rg_bottom_tab_health"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <RadioButton
+                android:id="@+id/rb_bottom_news"
+                style="@style/BottomTab"
+                android:checked="true"
+                android:drawableTop="@drawable/selector_bottom_tab_news"
+                android:text="@string/news"/>
+            <RadioButton
+                android:id="@+id/rb_bottom_knowledge"
+                style="@style/BottomTab"
+                android:drawableTop="@drawable/selector_bottom_tab_knowledge"
+                android:text="@string/knowledge"/>
+            <RadioButton
+                android:id="@+id/rb_bottom_question"
+                style="@style/BottomTab"
+                android:drawableTop="@drawable/selector_bottom_tab_question"
+                android:text="@string/question_answer"/>
+            <RadioButton
+                android:id="@+id/rb_bottom_book"
+                style="@style/BottomTab"
+                android:drawableTop="@drawable/selector_bottom_tab_book"
+                android:text="@string/book"/>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rg_bottom_tab_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+            <RadioButton
+                android:id="@+id/rb_bottom_hot"
+                style="@style/BottomTab"
+                android:checked="true"
+                android:drawableTop="@drawable/selector_bottom_tab_hot"
+                android:text="@string/hot"/>
+            <RadioButton
+                android:id="@+id/rb_bottom_food"
+                style="@style/BottomTab"
+                android:drawableTop="@drawable/selector_bottom_tab_food"
+                android:text="@string/food"/>
+            <RadioButton
+                android:id="@+id/rb_bottom_cookbook"
+                style="@style/BottomTab"
+                android:drawableTop="@drawable/selector_bottom_tab_cookbook"
+                android:text="@string/cookbook"/>
+        </RadioGroup>
+    </RelativeLayout>
+</LinearLayout>

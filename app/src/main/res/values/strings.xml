@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">简单生活</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="search">搜索</string>
+    <string name="left_menu_helth">健康</string>
+    <string name="left_menu_life">生活</string>
+    <string name="left_menu_setting">设置</string>
+    <string name="left_menu_exit">退出</string>
+    <string name="news">资讯</string>
+    <string name="knowledge">知识</string>
+    <string name="question_answer">问答</string>
+    <string name="book">图书</string>
+    <string name="hot">热点</string>
+    <string name="food">食品</string>
+    <string name="cookbook">菜谱</string>
+    <string name="read_free">在线阅读</string>
+    <string name="read_count">阅读量:</string>
+    <string name="publish">发表</string>
+    <string name="your_idea">说说你的想法</string>
+    <string name="add_my_shelf">加入书架</string>
+    <string name="breif_introduce">简介</string>
+    <string name="add_time">上架时间</string>
+    <string name="commend">评论</string>
+    <string name="picture">美图</string>
+
+    <!--健康频道底部标签数组-->
+    <string-array name="bottom_tab_health">
+        <item>资讯</item>
+        <item>知识</item>
+        <item>问答</item>
+        <item>图书</item>
+    </string-array>
+
+    <!--生活频道底部标签数组-->
+    <string-array name="bottom_tab_life">
+        <item>热点</item>
+        <item>食品</item>
+        <item>菜谱</item>
+    </string-array>
+
+    <!--图书分类名称数组-->
+    <string-array name="book_classify">
+        <item>孕妇育儿</item>
+        <item>美容时尚</item>
+        <item>健康养生</item>
+        <item>两性生活</item>
+        <item>美食烹饪</item>
+        <item>修养心里</item>
+        <item>家庭教育</item>
+        <item>幽默笑话</item>
+        <item>生活杂谈</item>
+        <item>其它</item>
+    </string-array>
+</resources>
