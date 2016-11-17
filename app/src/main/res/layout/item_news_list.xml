@@ -38,6 +38,7 @@
         android:lineSpacingExtra="2dp"
         android:maxLines="2"
         android:ellipsize="end"
+        android:textColor="@android:color/darker_gray"
         android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"/>
 
 
