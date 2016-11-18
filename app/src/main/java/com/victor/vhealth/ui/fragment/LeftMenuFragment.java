@@ -27,6 +27,11 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mllSetting;
     @ViewInject(R.id.ll_menu_item_exit)
     private LinearLayout mLLExit;
+    @ViewInject(R.id.ll_menu_item_medicine)
+    private LinearLayout mLlMedicine;
+    @ViewInject(R.id.ll_menu_item_pic)
+    private LinearLayout mLlPic;
+
     private MainActivity mActivity;
 
     @Override
@@ -52,8 +57,11 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     protected void initListener() {
         mllHealth.setOnClickListener(this);
         mllLife.setOnClickListener(this);
+        mLlMedicine.setOnClickListener(this);
+        mLlPic.setOnClickListener(this);
         mllSetting.setOnClickListener(this);
         mLLExit.setOnClickListener(this);
+
     }
 
     @Override
@@ -62,17 +70,23 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.ll_menu_item_health:
                 // 切换到健康频道视图
-                mainActivity.switchChanel(false);
+                mainActivity.switchChanel(MainActivity.ChanelType.HEALTH_CHANEL);
 //                mainActivity.initTab(false);
                 break;
             case R.id.ll_menu_item_life:
                 // 切换到生活频道视图
-                mainActivity.switchChanel(true);
+                mainActivity.switchChanel(MainActivity.ChanelType.LIFE_CHANEL);
 //                mainActivity.initTab(true);
                 break;
-            case R.id.ll_menu_item_setting:
-                UIUtils.showShortToast(getContext(), "设置");
+            case R.id.ll_menu_item_pic:
+                mainActivity.switchChanel(MainActivity.ChanelType.PIC_CHANLE);
                 break;
+            case R.id.ll_menu_item_setting:
+            UIUtils.showShortToast(getContext(), "设置");
+            break;
+            case R.id.ll_menu_item_medicine:
+            mainActivity.switchChanel(MainActivity.ChanelType.MEDICINE_CHANEL);
+            break;
             case R.id.ll_menu_item_exit:
                 quit();
                 break;

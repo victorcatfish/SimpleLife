@@ -26,14 +26,13 @@ public class Constant {
         public static final String LIFE_FOOD = "/food";
         public static final String LIFE_COOKBOOK = "/cook";
 
-        public static final String HEALTH_NEWS_LIST = BASE + HEALTH_NEWS + "/list";
-        public static final String HEALTH_KNOWLEDGE_LIST = BASE + HEALTH_KNOWLEDGE + "/list";
-        public static final String HEALTH_ASK_LIST = BASE + HEALTH_ASK + "/list";
-        public static final String HEALTH_BOOK_LIST = BASE + HEALTH_BOOK + "/list";
-
-        public static final String HEALTH_NEWS_DETAIL = BASE + HEALTH_NEWS + "/show";
-        public static final String HEALTH_KNOWLEDGE_DETAIL = BASE + HEALTH_KNOWLEDGE + "/show";
+        public static final String MEDICINE_DRUG = "/drug";
+        public static final String MEDICINE_DISEASE = "/disease";
+        public static String MEDICINE_HOSPTIAL = "/hospital";
+        public static String MEDICINE_PHARMACY = "/store";
+        public static String MEDICINE_COMPANY= "/factory";
 
         public static String DETAIL_SHOW = "show/";
+
     }
 }

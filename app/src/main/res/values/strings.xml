@@ -23,6 +23,13 @@
     <string name="add_time">上架时间</string>
     <string name="commend">评论</string>
     <string name="picture">美图</string>
+    <string name="left_menu_medicine">医疗</string>
+    <string name="drug_info">药品信息</string>
+    <string name="more">更多...</string>
+    <string name="disease_info">疾病信息</string>
+    <string name="hospital_info">医院门诊</string>
+    <string name="pharmacy_info">药店药房</string>
+    <string name="pharmaceutical_companies_info">药厂药企</string>
 
     <!--健康频道底部标签数组-->
     <string-array name="bottom_tab_health">
@@ -52,4 +59,8 @@
         <item>生活杂谈</item>
         <item>其它</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_tile">试用标题</string>
 </resources>

@@ -95,6 +95,7 @@ public abstract class BaseProtocol<T> {
                 params.addQueryStringParameter(key, value);
             }
         }
+        LogUtils.sf("url" + url);
         ResponseStream responseStream = httpUtils.sendSync(HttpRequest.HttpMethod.GET, url, params);
         String result = responseStream.readString();
         // 保存网络数据到本地

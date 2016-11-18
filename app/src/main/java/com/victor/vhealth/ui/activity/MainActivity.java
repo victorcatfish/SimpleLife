@@ -24,6 +24,8 @@ import com.victor.vhealth.R;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.ui.fragment.ClassifyFragment;
 import com.victor.vhealth.ui.fragment.LeftMenuFragment;
+import com.victor.vhealth.ui.fragment.medicine.MedicineIndexFragment;
+import com.victor.vhealth.ui.fragment.pic.PicFragment;
 import com.victor.vhealth.util.UIUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager mFm;
     private boolean isLifeHostInited = false;
     private long mPreTime;
+    private ChanelType mCurChanelType = ChanelType.HEALTH_CHANEL;
+    public enum ChanelType {
+        HEALTH_CHANEL,
+        MEDICINE_CHANEL,
+        LIFE_CHANEL,
+        PIC_CHANLE
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         initToolBar();
         initLeftMenuFragment();
         // 初始化Tab(默认初始化健康页面)
-        initTab(false);
+        initMainContent(ChanelType.HEALTH_CHANEL);
     }
 
     /**初始化侧边栏*/
@@ -119,78 +128,84 @@ public class MainActivity extends AppCompatActivity {
         }, 200);
     }
 
-    /** 初始化FragmentTab
-     * @param isShowLifePage true 初始化生活频道，否则初始化健康频道
+    /** 初始化内容(Fragment和Tab)
+     * @param type 需要进行初始化内容对应频道的类型
      */
-    public void initTab(boolean isShowLifePage) {
+    public void initMainContent(ChanelType type) {
         if (mflContentMain.getChildCount() > 0) {
             mflContentMain.removeAllViews();
         }
         mFm = getSupportFragmentManager();
-        if (isShowLifePage) {
-            // 初始化生活频道的TabHost
-            mLifeView = View.inflate(this, R.layout.layout_life_pager, null);
-            ViewUtils.inject(this, mLifeView);
-            mLifeTabTitles = UIUtils.getStringArray(R.array.bottom_tab_life);
-            mLifeTabHost.setup(this, mFm, R.id.fl_life_content);
-            for (int i = 0; i < mLifeTabTitles.length; i++) {
-                TabHost.TabSpec tab = mLifeTabHost.newTabSpec(mLifeTabTitles[i]);
-                // 初始化tab的标签视图
-                View indicator = View.inflate(this, R.layout.layout_bottom_tab, null);
-                TextView textView = (TextView) indicator.findViewById(R.id.tv_tab_title);
-                ImageView tabIcon = (ImageView) indicator.findViewById(R.id.iv_tab_icon);
-                tabIcon.setImageDrawable(UIUtils.getDrawable(mLifeTabIconIds[i]));
-                textView.setText(mLifeTabTitles[i]);
-                // 设置tab标签视图
-                tab.setIndicator(indicator);
-                // 给fragment传入分类URL的关键字
-                Bundle bundle = new Bundle();
-                bundle.putString(ClassifyFragment.URL_KEY, mLifeUrlKey[i]);
-                bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
-                mLifeTabHost.addTab(tab, ClassifyFragment.class, bundle);
-            }
-            isLifeHostInited = true;
-        } else {
-            // 初始化健康频道的TabHost
-            mHealthView = View.inflate(this, R.layout.layout_health_pager, null);
-            ViewUtils.inject(this, mHealthView);
-            mHealthTabTitles = UIUtils.getStringArray(R.array.bottom_tab_health);
-            mHealthTabHost.setup(this, mFm, R.id.fl_health_content);
-            for (int i = 0; i < mHealthTabTitles.length; i++) {
-                TabHost.TabSpec tab = mHealthTabHost.newTabSpec(mHealthTabTitles[i]);
-                // 初始化tab的标签视图
-                View indicator = View.inflate(this, R.layout.layout_bottom_tab, null);
-                TextView textView = (TextView) indicator.findViewById(R.id.tv_tab_title);
-                ImageView tabIcon = (ImageView) indicator.findViewById(R.id.iv_tab_icon);
-                tabIcon.setImageDrawable(UIUtils.getDrawable(mHealthTabIconIds[i]));
-                textView.setText(mHealthTabTitles[i]);
-                // 设置tab标签视图
-                tab.setIndicator(indicator);
-                // 给fragment传入分类URL的关键字
-                Bundle bundle = new Bundle();
-                bundle.putString(ClassifyFragment.URL_KEY, mHealthUrlKey[i]);
-                bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
-                mHealthTabHost.addTab(tab, ClassifyFragment.class, bundle);
-            }
+        switch (type) {
+            case HEALTH_CHANEL:
+                // 初始化健康频道的TabHost
+                mHealthView = View.inflate(this, R.layout.layout_health_pager, null);
+                ViewUtils.inject(this, mHealthView);
+                mHealthTabTitles = UIUtils.getStringArray(R.array.bottom_tab_health);
+                mHealthTabHost.setup(this, mFm, R.id.fl_health_content);
+                for (int i = 0; i < mHealthTabTitles.length; i++) {
+                    TabHost.TabSpec tab = mHealthTabHost.newTabSpec(mHealthTabTitles[i]);
+                    // 初始化tab的标签视图
+                    View indicator = View.inflate(this, R.layout.layout_bottom_tab, null);
+                    TextView textView = (TextView) indicator.findViewById(R.id.tv_tab_title);
+                    ImageView tabIcon = (ImageView) indicator.findViewById(R.id.iv_tab_icon);
+                    tabIcon.setImageDrawable(UIUtils.getDrawable(mHealthTabIconIds[i]));
+                    textView.setText(mHealthTabTitles[i]);
+                    // 设置tab标签视图
+                    tab.setIndicator(indicator);
+                    // 给fragment传入分类URL的关键字
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ClassifyFragment.URL_KEY, mHealthUrlKey[i]);
+                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
+                    mHealthTabHost.addTab(tab, ClassifyFragment.class, bundle);
+                }
+                mflContentMain.addView(mHealthView);
+                break;
+            case MEDICINE_CHANEL:
+                break;
+            case LIFE_CHANEL:
+                // 初始化生活频道的TabHost
+                mLifeView = View.inflate(this, R.layout.layout_life_pager, null);
+                ViewUtils.inject(this, mLifeView);
+                mLifeTabTitles = UIUtils.getStringArray(R.array.bottom_tab_life);
+                mLifeTabHost.setup(this, mFm, R.id.fl_life_content);
+                for (int i = 0; i < mLifeTabTitles.length; i++) {
+                    TabHost.TabSpec tab = mLifeTabHost.newTabSpec(mLifeTabTitles[i]);
+                    // 初始化tab的标签视图
+                    View indicator = View.inflate(this, R.layout.layout_bottom_tab, null);
+                    TextView textView = (TextView) indicator.findViewById(R.id.tv_tab_title);
+                    ImageView tabIcon = (ImageView) indicator.findViewById(R.id.iv_tab_icon);
+                    tabIcon.setImageDrawable(UIUtils.getDrawable(mLifeTabIconIds[i]));
+                    textView.setText(mLifeTabTitles[i]);
+                    // 设置tab标签视图
+                    tab.setIndicator(indicator);
+                    // 给fragment传入分类URL的关键字
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ClassifyFragment.URL_KEY, mLifeUrlKey[i]);
+                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
+                    mLifeTabHost.addTab(tab, ClassifyFragment.class, bundle);
+                    isLifeHostInited = true;
+                }
+                mflContentMain.addView(mLifeView);
+                break;
+            case PIC_CHANLE:
+                break;
         }
-        mflContentMain.addView(isShowLifePage ? mLifeView : mHealthView);
     }
 
-    /** 切换健康或者生活频道
-     * @param isLifeChanel true 切换为生活频道 否则切换为健康频道
+    /** 切换显示频道
+     * @param type 需要显示频道的类型
      */
-    public void switchChanel(boolean isLifeChanel) {
+    public void switchChanel(ChanelType type) {
         if (mflContentMain.getChildCount() > 0) {
             mflContentMain.removeAllViews();
         }
-        if (isLifeChanel) {
-            // 判断生活频道是否初始化了，第一次切换到生活频道的时候先进行初始化
-            if (isLifeHostInited) {
-                // 如果之前是在该频道首个page离开页面，切换回来，系统不会主动加载fragment页面，
-                // 让其手动加载一次页面，否则否则无法显示fragment的界面
-                String tag = mLifeTabHost.getCurrentTabTag();
-                if (tag.equals(mLifeTabTitles[0])) {
-                    FragmentTransaction ft = mFm.beginTransaction();
+        String tag = null;
+        FragmentTransaction ft = mFm.beginTransaction();
+        switch (type) {
+            case HEALTH_CHANEL:
+                tag = mHealthTabHost.getCurrentTabTag();
+                if (tag.equals(mHealthTabTitles[0])) {
                     Fragment fragment = mFm.findFragmentByTag(tag);
                     if (fragment != null) {
                         ft.attach(fragment);
@@ -198,29 +213,60 @@ public class MainActivity extends AppCompatActivity {
                         mFm.executePendingTransactions();
                     }
                 }
-            } else {
-                initTab(true);
-                return;
-            }
-        } else {
-            String tag = mHealthTabHost.getCurrentTabTag();
-            if (tag.equals(mHealthTabTitles[0])) {
-                FragmentTransaction ft = mFm.beginTransaction();
-                Fragment fragment = mFm.findFragmentByTag(tag);
-                if (fragment != null) {
-                    ft.attach(fragment);
-                    ft.commit();
-                    mFm.executePendingTransactions();
+                mflContentMain.addView(mHealthView);
+                mCurChanelType = ChanelType.HEALTH_CHANEL;
+                break;
+            case MEDICINE_CHANEL:
+                ft.replace(R.id.fl_content_main, new MedicineIndexFragment());
+                ft.commit();
+                mCurChanelType = ChanelType.MEDICINE_CHANEL;
+                break;
+            case LIFE_CHANEL:
+                // 判断生活频道是否初始化了，第一次切换到生活频道的时候先进行初始化
+                if (isLifeHostInited) {
+                    // 如果之前是在该频道首个page离开页面，切换回来，系统不会主动加载fragment页面，
+                    // 让其手动加载一次页面，否则否则无法显示fragment的界面
+                    tag = mLifeTabHost.getCurrentTabTag();
+                    if (tag.equals(mLifeTabTitles[0])) {
+                        Fragment fragment = mFm.findFragmentByTag(tag);
+                        if (fragment != null) {
+                            ft.attach(fragment);
+                            ft.commit();
+                            mFm.executePendingTransactions();
+                        }
+                    }
+                } else {
+                    initMainContent(ChanelType.LIFE_CHANEL);
+                    return;
                 }
-            }
+                mflContentMain.addView(mLifeView);
+                mCurChanelType = ChanelType.LIFE_CHANEL;
+                break;
+            case PIC_CHANLE:
+                ft.replace(R.id.fl_content_main, new PicFragment());
+                ft.commit();
+                mCurChanelType = ChanelType.PIC_CHANLE;
+                break;
         }
-        mflContentMain.addView(isLifeChanel ? mLifeView : mHealthView);
+        invalidateOptionsMenu();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        if (mCurChanelType != ChanelType.HEALTH_CHANEL && mCurChanelType != ChanelType.LIFE_CHANEL) {
+            menu.findItem(R.id.ab_search).setVisible(false);
+        } else
+        {
+            menu.findItem(R.id.ab_search).setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
