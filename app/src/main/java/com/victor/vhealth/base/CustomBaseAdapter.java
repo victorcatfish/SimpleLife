@@ -78,7 +78,7 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter implements Adapte
     }
 
     /**是否需要加载更多，默认返回true，子类可以根据自身需要重写*/
-    private boolean needLoadMore() {
+    protected boolean needLoadMore() {
         return true;
     }
 
@@ -162,7 +162,9 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter implements Adapte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (parent instanceof AbsListView) {
             // 如果ListView有HeaderView 需要从数量中减去,更正positon
-            position = position - ((ListView) parent).getHeaderViewsCount();
+            if (parent instanceof ListView) {
+                position = position - ((ListView) parent).getHeaderViewsCount();
+            }
             if (getItemViewType(position) == VIEW_TYPE_LOAD_MORE) {
                 performLoadMore();
             } else {

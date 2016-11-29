@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.victor.vhealth.widget.MyFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/sv_disease_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:background="@color/dark_green">
+
+                <ImageView
+                    android:id="@+id/iv_disease_list"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@mipmap/white_list_icon"/>
+
+                <EditText
+                    android:id="@+id/et_disease_search"
+                    android:padding="2dp"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/dark_gray"
+                    android:hint="@string/disease_info"
+                    android:background="@drawable/rounded_edittext"/>
+
+                <ImageView
+                    android:id="@+id/iv_disease_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/actionbar_search_icon"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_tab_pressed"
+                android:textColor="@color/dark_gray"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:textSize="16sp"
+                android:text="@string/focus_disease"/>
+
+            <FrameLayout
+                android:id="@+id/fl_disease_focus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_disease_right_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/disease_right_menu_bg">
+
+        <FrameLayout
+            android:id="@+id/fl_disease_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</com.victor.vhealth.widget.MyFrameLayout>

@@ -63,4 +63,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_tile">试用标题</string>
+    <string name="tag">标签</string>
+    <string name="hot_drug">热门药品</string>
+    <string name="recent_drug">最新药品</string>
+    <string name="focus_disease">最受关注疾病</string>
+    <string name="body">身体</string>
+    <string name="department">科室</string>
+    <string name="disease_introduce">疾病简介</string>
+    <string name="disease_reason">疾病病因</string>
+    <string name="disease_symptom">病情病状</string>
+    <string name="disease_check">检查诊断</string>
+    <string name="disease_drug">相关药物</string>
+    <string name="disease_care">预防治疗</string>
 </resources>

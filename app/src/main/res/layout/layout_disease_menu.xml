@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/rg_disease_menu_first"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_disease_body"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/disease_menu_selected"
+            android:text="@string/body"
+            android:textColor="@color/dark_red"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rb_disease_department"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@color/white"
+            android:text="@string/department"
+            android:textColor="@color/dark_gray"/>
+
+    </RadioGroup>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <RadioGroup
+            android:id="@+id/rg_disease_menu_second"
+            android:layout_marginLeft="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </RadioGroup>
+    </ScrollView>
+
+    <GridView
+        android:id="@+id/gv_disease_menu_third"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:columnWidth="80dp"
+        android:numColumns="auto_fit"
+        android:layout_marginLeft="2dp">
+    </GridView>
+
+
+</LinearLayout>

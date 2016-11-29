@@ -15,9 +15,10 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.victor.vhealth.R;
 import com.victor.vhealth.base.ContentBaseFragment;
 import com.victor.vhealth.factory.CustomFragmentFactory;
-import com.victor.vhealth.ui.fragment.DetailCommenFragment;
 import com.victor.vhealth.ui.fragment.detail.AskDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.BookDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.DiseaseDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.DrugDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.KnowledgeDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.NewsDetailFragment;
 import com.victor.vhealth.util.UIUtils;
@@ -58,6 +59,10 @@ public class DetailActivity extends AppCompatActivity {
             mToolbar.setTitle("问答详情");
         } else if (mFragment instanceof BookDetailFragment) {
             mToolbar.setTitle("图书详情");
+        } else if (mFragment instanceof DrugDetailFragment) {
+            mToolbar.setTitle("药品信息");
+        } else if (mFragment instanceof DiseaseDetailFragment) {
+            mToolbar.setTitle("疾病信息");
         }
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -98,19 +103,7 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (mFragment instanceof DetailCommenFragment) {
-                    if (mFragment instanceof BookDetailFragment) {
-                        finish();
-                    } else {
-                        DetailCommenFragment fragment = (DetailCommenFragment) mFragment;
-                        fragment.goBack();
-                    }
-                } else {
-                    finish();
-                }
-                break;
-            case R.id.text_size:
-                showTextSizeDialog();
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

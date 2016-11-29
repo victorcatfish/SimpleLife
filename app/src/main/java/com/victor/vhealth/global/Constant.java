@@ -28,11 +28,19 @@ public class Constant {
 
         public static final String MEDICINE_DRUG = "/drug";
         public static final String MEDICINE_DISEASE = "/disease";
-        public static String MEDICINE_HOSPTIAL = "/hospital";
-        public static String MEDICINE_PHARMACY = "/store";
-        public static String MEDICINE_COMPANY= "/factory";
+        public static final String MEDICINE_DISEASE_LIST = MEDICINE_DISEASE + "/list";
+        public static final String MEDICINE_HOSPTIAL = "/hospital";
+        public static final String MEDICINE_PHARMACY = "/store";
+        public static final String MEDICINE_COMPANY= "/factory";
+        public static final String MEDICINE_DEPARTMENT = "/department";
+        public static final String MEDICINE_BODY = "/place";
 
-        public static String DETAIL_SHOW = "show/";
+        public static final String SEARCH = "/search";
+    }
 
+
+    public static class SearchKeyword {
+        public static final String DRUG = "drug";
+        public static final String DISEASE = "disease";
     }
 }

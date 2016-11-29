@@ -44,22 +44,28 @@ public abstract class LoadingPager extends FrameLayout {
     private void initExceptionView() {
 
         // 初始化加载页面
-        mLoadingPage = View.inflate(UIUtils.getContext(), R.layout.pager_loading, null);
-        this.addView(mLoadingPage);
+        if (mLoadingPage == null) {
+            mLoadingPage = View.inflate(UIUtils.getContext(), R.layout.pager_loading, null);
+            this.addView(mLoadingPage);
+        }
         // 初始化空页面
-        mEmptyPage = View.inflate(UIUtils.getContext(), R.layout.pager_empty, null);
-        this.addView(mEmptyPage);
+        if (mEmptyPage == null) {
+            mEmptyPage = View.inflate(UIUtils.getContext(), R.layout.pager_empty, null);
+            this.addView(mEmptyPage);
+        }
 
         // 初始化错误页面
-        mErrorPage = View.inflate(UIUtils.getContext(), R.layout.pager_error, null);
-        mErrorPage.findViewById(R.id.error_btn_retry).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 重新触发加载数据数据
-                loadData();
-            }
-        });
-        this.addView(mErrorPage);
+        if (mErrorPage == null) {
+            mErrorPage = View.inflate(UIUtils.getContext(), R.layout.pager_error, null);
+            mErrorPage.findViewById(R.id.error_btn_retry).setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 重新触发加载数据数据
+                    loadData();
+                }
+            });
+            this.addView(mErrorPage);
+        }
 
         refreshUIbyState();
     }
@@ -67,7 +73,7 @@ public abstract class LoadingPager extends FrameLayout {
     /**根据加载结果的状态刷新界面*/
     private void refreshUIbyState() {
 
-        this.removeAllViews();
+        // this.removeAllViews();
 
         // 控制加载视图的显示和隐藏
         mLoadingPage.setVisibility(mCurState == STATE_LOADING || mCurState == STATE_UNDO

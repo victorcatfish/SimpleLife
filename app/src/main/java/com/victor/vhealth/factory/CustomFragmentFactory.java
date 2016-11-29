@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.v4.util.SparseArrayCompat;
 
 import com.victor.vhealth.base.ContentBaseFragment;
+import com.victor.vhealth.base.KeyWordSearchBaseFragment;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.ui.fragment.detail.AskDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.BookDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.DiseaseDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.DrugDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.KnowledgeDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.NewsDetailFragment;
 import com.victor.vhealth.ui.fragment.health.AskFragment;
@@ -16,6 +19,14 @@ import com.victor.vhealth.ui.fragment.health.NewsFragment;
 import com.victor.vhealth.ui.fragment.life.CookbookFragment;
 import com.victor.vhealth.ui.fragment.life.FoodFragment;
 import com.victor.vhealth.ui.fragment.life.TopFragment;
+import com.victor.vhealth.ui.fragment.medicine.DiseaseFragment;
+import com.victor.vhealth.ui.fragment.medicine.DrugFragment;
+import com.victor.vhealth.ui.fragment.medicine.MedicineFragment;
+import com.victor.vhealth.ui.fragment.search.DiseaseClassifySearchFragment;
+import com.victor.vhealth.ui.fragment.search.DiseaseKeywordSearchFragment;
+import com.victor.vhealth.ui.fragment.search.DrugKeywordSearchFragment;
+import com.victor.vhealth.ui.fragment.search.DrugSearchFragment;
+import com.victor.vhealth.base.ClassifySearchBaseFragment;
 
 /**自定义fragment工厂类
  * Created by Victor on 2016/7/5.
@@ -102,6 +113,64 @@ public class CustomFragmentFactory {
             fragment.setArguments(bundle);
         }else if (key.equals(Constant.URL.HEALTH_BOOK)) {
             fragment = new BookDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.MEDICINE_DRUG)) {
+            fragment = new DrugDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.MEDICINE_DISEASE)) {
+            fragment = new DiseaseDetailFragment();
+            fragment.setArguments(bundle);
+        }
+        return fragment;
+    }
+
+
+    public static MedicineFragment createMedicineFragment (String key) {
+        MedicineFragment fragment = null;
+        if (key.equals(Constant.URL.MEDICINE_DRUG)) {
+            fragment = new DrugFragment();
+        } else if (key.equals(Constant.URL.MEDICINE_DISEASE)) {
+            fragment = new DiseaseFragment();
+        }
+
+        return fragment;
+    }
+
+
+    public static ContentBaseFragment createSearchFragment(String urlKey, String searchKey, int id) {
+        ContentBaseFragment fragment = null;
+        Bundle bundle = new Bundle();
+        bundle.putInt(ContentBaseFragment.DATA_ID, id);
+        if (searchKey != null) {
+            bundle.putString(ClassifySearchBaseFragment.SEARCH_CLASSIFY_KEY, searchKey);
+        }
+        if (urlKey.equals(Constant.URL.MEDICINE_DISEASE)) {
+            fragment = new DiseaseClassifySearchFragment();
+            fragment.setArguments(bundle);
+        }else if (urlKey.equals(Constant.URL.MEDICINE_DRUG)) {
+            fragment = new DrugSearchFragment();
+            fragment.setArguments(bundle);
+        }
+
+        return fragment;
+    }
+
+
+    public static KeyWordSearchBaseFragment createKeywordSearchFragment(String classifyKey, String keyword) {
+        KeyWordSearchBaseFragment fragment = null;
+        Bundle bundle = new Bundle();
+        if (classifyKey != null) {
+            bundle.putString(KeyWordSearchBaseFragment.KEYWORD_SEARCH_CLASSIFY, classifyKey);
+        }
+        if (keyword != null) {
+            bundle.putString(KeyWordSearchBaseFragment.KEY_WORD, keyword);
+        }
+
+        if (Constant.SearchKeyword.DRUG.equals(classifyKey)) {
+            fragment = new DrugKeywordSearchFragment();
+            fragment.setArguments(bundle);
+        } else if (Constant.SearchKeyword.DISEASE.equals(classifyKey)) {
+            fragment = new DiseaseKeywordSearchFragment();
             fragment.setArguments(bundle);
         }
         return fragment;

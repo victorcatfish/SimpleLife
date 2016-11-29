@@ -90,7 +90,7 @@ public class AskFragment extends ContentBaseFragment {
 
         @Override
         protected void onNormalItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // TODO 开启资讯详情页面
+            // 开启资讯详情页面
             Intent intent = new Intent(UIUtils.getContext(), DetailActivity.class);
             intent.putExtra(ContentBaseFragment.DATA_ID, mDatas.get(position).id);
             // 放入url里面的关键词，用于区分是资讯，知识、问答等……

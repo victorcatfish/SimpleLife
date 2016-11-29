@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Process;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.victor.vhealth.global.VHealthApplication;
@@ -171,6 +172,11 @@ public class UIUtils {
         }
     }
 
+    public static int getWindowWidth() {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        return wm.getDefaultDisplay().getWidth();
+    }
+
     /**得到应用程序的包名*/
     public static String getPackageName() {
         return getContext().getPackageName();
@@ -185,4 +191,8 @@ public class UIUtils {
     public static void removeTask(Runnable task) {
         getMainThreadHandler().removeCallbacks(task);
     }
+
+
+
+
 }

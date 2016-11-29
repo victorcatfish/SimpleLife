@@ -1,4 +1,4 @@
-package com.victor.vhealth.ui.fragment;
+package com.victor.vhealth.ui.fragment.health;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.lidroid.xutils.ViewUtils;
@@ -16,11 +14,10 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.victor.vhealth.R;
 import com.victor.vhealth.base.ContentBaseFragment;
-import com.victor.vhealth.domain.HealthClassify;
+import com.victor.vhealth.domain.ClassifyInfo;
 import com.victor.vhealth.factory.CustomFragmentFactory;
-import com.victor.vhealth.factory.ThreadPoolFactory;
 import com.victor.vhealth.protocol.ClassifyProtocol;
-import com.victor.vhealth.util.UIUtils;
+import com.victor.vhealth.widget.LoadingPager;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +25,7 @@ import java.util.List;
 /** 内容分类Fragment
  * Created by Victor on 2016/7/1.
  */
-public class ClassifyFragment extends Fragment {
+public class HealthClassifyFragment extends ContentBaseFragment {
 
     public static final String CHANNEL_TAG = "channel_tag";
     public static final String URL_KEY = "url_key";
@@ -39,7 +36,7 @@ public class ClassifyFragment extends Fragment {
     @ViewInject(R.id.pts_content_indicator)
     PagerSlidingTabStrip mPagerIndicator;
 
-    private List<HealthClassify.ClassifyInfo> mClassifyInfos;
+    private List<ClassifyInfo> mClassifyInfos;
     private ContentAdapter mAdapter;
     private String mUrlKey;
     private String mChannelTag;
@@ -54,27 +51,32 @@ public class ClassifyFragment extends Fragment {
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getContext(), R.layout.layout_base_pager, null);
-        ViewUtils.inject(this, view);
-        return view;
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initData();
+        getLoadingPager().loadData();
     }
 
-    protected void initData() {
+    protected LoadingPager.LoadResult initData() {
         final ClassifyProtocol protocol = new ClassifyProtocol(mUrlKey);
-        ThreadPoolFactory.getThreadPool().execute(new Runnable() {
+        try {
+            mClassifyInfos = protocol.loadData(0);
+            return checkState(mClassifyInfos);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return LoadingPager.LoadResult.ERROR;
+        } catch (HttpException e) {
+            e.printStackTrace();
+            return LoadingPager.LoadResult.ERROR;
+        }
+
+
+        /*ThreadPoolFactory.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
                 try {
                     mClassifyInfos = protocol.loadData(0);
+
                     UIUtils.runningOnUIThread(new Runnable() {
                         @Override
                         public void run() {
@@ -87,7 +89,15 @@ public class ClassifyFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
+    }
+
+    @Override
+    protected View initSuccessView() {
+        View view = View.inflate(getContext(), R.layout.layout_base_pager, null);
+        ViewUtils.inject(this, view);
+        refreshView();
+        return view;
     }
 
     private void refreshView() {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:gravity="center_horizontal">
+
+    <com.victor.vhealth.widget.MyGridView
+        android:id="@+id/gv_drug_classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="80dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:gravity="center"/>
+
+    <ImageView
+        android:layout_margin="3dp"
+        android:id="@+id/iv_drug_classify_fold"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@mipmap/icon_unfold"/>
+
+
+</LinearLayout>

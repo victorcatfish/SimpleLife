@@ -12,4 +12,7 @@
     <color name="left_menu_item_background_pressed">#ebeceb</color>
 
     <color name="bottom_tab_text_normal">#3d3d3d</color>
+    <color name="dark_green">#056c20</color>
+    <color name="dark_red">#be0001</color>
+    <color name="disease_right_menu_bg">#e4e4e4</color>
 </resources>

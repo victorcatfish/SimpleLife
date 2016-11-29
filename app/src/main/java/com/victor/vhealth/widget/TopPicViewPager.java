@@ -36,7 +36,7 @@ public class TopPicViewPager extends ViewPager {
                 // 计算上下滑动的距离
                 float deltaY = endY - mStartY;
                 // 如果左右滑动的距离大于上下滑动的距离 判定为左右滑动
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (Math.abs(deltaX) >= Math.abs(deltaY)) {
                     // 左右滑动 自己处理
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }

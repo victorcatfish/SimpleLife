@@ -22,7 +22,7 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.victor.vhealth.R;
 import com.victor.vhealth.global.Constant;
-import com.victor.vhealth.ui.fragment.ClassifyFragment;
+import com.victor.vhealth.ui.fragment.health.HealthClassifyFragment;
 import com.victor.vhealth.ui.fragment.LeftMenuFragment;
 import com.victor.vhealth.ui.fragment.medicine.MedicineIndexFragment;
 import com.victor.vhealth.ui.fragment.pic.PicFragment;
@@ -155,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
                     tab.setIndicator(indicator);
                     // 给fragment传入分类URL的关键字
                     Bundle bundle = new Bundle();
-                    bundle.putString(ClassifyFragment.URL_KEY, mHealthUrlKey[i]);
-                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
-                    mHealthTabHost.addTab(tab, ClassifyFragment.class, bundle);
+                    bundle.putString(HealthClassifyFragment.URL_KEY, mHealthUrlKey[i]);
+                    bundle.putString(HealthClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
+                    mHealthTabHost.addTab(tab, HealthClassifyFragment.class, bundle);
                 }
                 mflContentMain.addView(mHealthView);
                 break;
@@ -181,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
                     tab.setIndicator(indicator);
                     // 给fragment传入分类URL的关键字
                     Bundle bundle = new Bundle();
-                    bundle.putString(ClassifyFragment.URL_KEY, mLifeUrlKey[i]);
-                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
-                    mLifeTabHost.addTab(tab, ClassifyFragment.class, bundle);
+                    bundle.putString(HealthClassifyFragment.URL_KEY, mLifeUrlKey[i]);
+                    bundle.putString(HealthClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
+                    mLifeTabHost.addTab(tab, HealthClassifyFragment.class, bundle);
                     isLifeHostInited = true;
                 }
                 mflContentMain.addView(mLifeView);

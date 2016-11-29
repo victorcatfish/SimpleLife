@@ -5,6 +5,7 @@ import com.victor.vhealth.base.BaseProtocol;
 import com.victor.vhealth.domain.DiseaseInfo;
 import com.victor.vhealth.domain.DiseaseInfoList;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,19 +15,27 @@ import java.util.Map;
 public class DiseaseProtocol extends BaseProtocol<List<DiseaseInfo>> {
 
     private String mUrlPrimary;
+    private int mId;
 
-    public DiseaseProtocol(String urlPrimary) {
+    public DiseaseProtocol(String urlPrimary, int id) {
         mUrlPrimary = urlPrimary;
+        mId = id;
     }
 
     @Override
     protected String getUrlKey() {
-        return mUrlPrimary + "/list";
+        return mUrlPrimary;
     }
 
     @Override
     protected Map<String, String> getExtraParmas() {
-        return null;
+        if (mId == -1) {
+            return null;
+        } else {
+            Map<String, String> params = new HashMap<>();
+            params.put("id", mId + "");
+            return params;
+        }
     }
 
     @Override
