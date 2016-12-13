@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.victor.vhealth.base.BaseProtocol;
 import com.victor.vhealth.domain.ClassifyInfo;
 import com.victor.vhealth.domain.ClassifyInfoList;
+import com.victor.vhealth.global.Constant;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,9 @@ public class ClassifyProtocol extends BaseProtocol<List<ClassifyInfo>> {
 
     @Override
     protected String getUrlKey() {
+        if (Constant.URL.PIC.equals(mUrlKey)) {
+            return mUrlKey + "/api" + "/classify";
+        }
         return mUrlKey + "/classify";
     }
 

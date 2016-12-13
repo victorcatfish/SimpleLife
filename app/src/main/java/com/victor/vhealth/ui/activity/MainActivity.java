@@ -22,10 +22,9 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.victor.vhealth.R;
 import com.victor.vhealth.global.Constant;
-import com.victor.vhealth.ui.fragment.health.HealthClassifyFragment;
+import com.victor.vhealth.ui.fragment.ClassifyFragment;
 import com.victor.vhealth.ui.fragment.LeftMenuFragment;
 import com.victor.vhealth.ui.fragment.medicine.MedicineIndexFragment;
-import com.victor.vhealth.ui.fragment.pic.PicFragment;
 import com.victor.vhealth.util.UIUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         initToolBar();
         initLeftMenuFragment();
         // 初始化Tab(默认初始化健康页面)
+
         initMainContent(ChanelType.HEALTH_CHANEL);
     }
 
@@ -155,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
                     tab.setIndicator(indicator);
                     // 给fragment传入分类URL的关键字
                     Bundle bundle = new Bundle();
-                    bundle.putString(HealthClassifyFragment.URL_KEY, mHealthUrlKey[i]);
-                    bundle.putString(HealthClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
-                    mHealthTabHost.addTab(tab, HealthClassifyFragment.class, bundle);
+                    bundle.putString(ClassifyFragment.URL_KEY, mHealthUrlKey[i]);
+                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.HEALTH_CHANNEL);
+                    mHealthTabHost.addTab(tab, ClassifyFragment.class, bundle);
                 }
                 mflContentMain.addView(mHealthView);
                 break;
@@ -181,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
                     tab.setIndicator(indicator);
                     // 给fragment传入分类URL的关键字
                     Bundle bundle = new Bundle();
-                    bundle.putString(HealthClassifyFragment.URL_KEY, mLifeUrlKey[i]);
-                    bundle.putString(HealthClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
-                    mLifeTabHost.addTab(tab, HealthClassifyFragment.class, bundle);
+                    bundle.putString(ClassifyFragment.URL_KEY, mLifeUrlKey[i]);
+                    bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.LIFE_CHANNEL);
+                    mLifeTabHost.addTab(tab, ClassifyFragment.class, bundle);
                     isLifeHostInited = true;
                 }
                 mflContentMain.addView(mLifeView);
@@ -243,8 +243,13 @@ public class MainActivity extends AppCompatActivity {
                 mCurChanelType = ChanelType.LIFE_CHANEL;
                 break;
             case PIC_CHANLE:
-                ft.replace(R.id.fl_content_main, new PicFragment());
-                ft.commit();
+                ClassifyFragment classifyFragment = new ClassifyFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(ClassifyFragment.URL_KEY, Constant.URL.PIC);
+                bundle.putString(ClassifyFragment.CHANNEL_TAG, Constant.PIC_CHANNEL);
+                classifyFragment.setArguments(bundle);
+                ft.replace(R.id.fl_content_main, classifyFragment);
+                ft.commitAllowingStateLoss();
                 mCurChanelType = ChanelType.PIC_CHANLE;
                 break;
         }
@@ -260,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        if (mCurChanelType != ChanelType.HEALTH_CHANEL && mCurChanelType != ChanelType.LIFE_CHANEL) {
+        if (mCurChanelType != ChanelType.HEALTH_CHANEL) {
             menu.findItem(R.id.ab_search).setVisible(false);
         } else
         {

@@ -29,7 +29,7 @@ import com.victor.vhealth.domain.DepartmentList;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.protocol.BodyProtocol;
 import com.victor.vhealth.protocol.DepartmentPrototol;
-import com.victor.vhealth.ui.activity.SearchActivity;
+import com.victor.vhealth.ui.activity.ClassifySearchActivity;
 import com.victor.vhealth.base.ClassifySearchBaseFragment;
 import com.victor.vhealth.util.UIUtils;
 import com.victor.vhealth.widget.LoadingPager;
@@ -94,16 +94,19 @@ public class DiseaseMenuFragment extends ContentBaseFragment implements RadioGro
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mRgMenuFirst.getCheckedRadioButtonId() == R.id.rb_disease_body) {
                     // 根据body来搜索疾病信息
-                    Intent intent = new Intent(UIUtils.getContext(), SearchActivity.class);
+                    Intent intent = new Intent(UIUtils.getContext(), ClassifySearchActivity.class);
                     intent.putExtra(ContentBaseFragment.DATA_ID, mBodyAdapter.mDatas.get(position).id);
-                    intent.putExtra(SearchActivity.SEARCH_CALSSIFY_TYPE, Constant.URL.MEDICINE_DISEASE);
+                    intent.putExtra(ClassifySearchActivity.SEARCH_CLASSIFY_NAME, mBodyAdapter.mDatas.get(position).name);
+                    intent.putExtra(ClassifySearchActivity.SEARCH_CLASSIFY_TYPE, Constant.URL.MEDICINE_DISEASE);
                     intent.putExtra(ClassifySearchBaseFragment.SEARCH_CLASSIFY_KEY, Constant.URL.MEDICINE_BODY);
                     startActivity(intent);
                 } else {
                     // 根据科室来搜索疾病信息
-                    Intent intent = new Intent(UIUtils.getContext(), SearchActivity.class);
+                    Intent intent = new Intent(UIUtils.getContext(), ClassifySearchActivity.class);
                     intent.putExtra(ContentBaseFragment.DATA_ID, mDepartmentAdapter.mDatas.get(position).id);
-                    intent.putExtra(SearchActivity.SEARCH_CALSSIFY_TYPE, Constant.URL.MEDICINE_DISEASE);
+                    intent.putExtra(ClassifySearchActivity.SEARCH_CLASSIFY_NAME,
+                            mDepartmentAdapter.mDatas.get(position).name);
+                    intent.putExtra(ClassifySearchActivity.SEARCH_CLASSIFY_TYPE, Constant.URL.MEDICINE_DISEASE);
                     intent.putExtra(ClassifySearchBaseFragment.SEARCH_CLASSIFY_KEY, Constant.URL.MEDICINE_DEPARTMENT);
                     startActivity(intent);
                 }

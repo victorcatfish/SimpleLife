@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    android:background="@color/dark_gray">
+
+    <!-- 图片展示区域 -->
+
+    <FrameLayout
+        android:id="@+id/fl_pic_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+   <!-- <com.victor.vhealth.widget.TopPicViewPager
+        android:id="@+id/vp_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+
+    <!-- 指针容器 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#66666666">
+
+        <TextView
+            android:id="@+id/tv_pic_title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="3dp"
+            android:singleLine="true"
+            android:text="标题碧桃标题"
+            android:ellipsize="end"/>
+
+        <LinearLayout
+            android:id="@+id/ll_pic_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

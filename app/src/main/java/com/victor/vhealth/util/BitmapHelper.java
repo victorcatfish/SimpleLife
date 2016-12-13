@@ -1,21 +1,22 @@
 package com.victor.vhealth.util;
 
-import android.view.View;
+import android.widget.ImageView;
 
-import com.lidroid.xutils.BitmapUtils;
+import com.squareup.picasso.Picasso;
 
 /** BitmapUtils的工厂类
  * Created by Victor on 2016/6/22.
  */
 public class BitmapHelper {
 
-    public static BitmapUtils sBitmapUtils;
+    /*public static BitmapUtils sBitmapUtils;
 
     static {
         sBitmapUtils = new BitmapUtils(UIUtils.getContext());
-    }
+    }*/
 
-    public static <T extends View> void display(T container, String uri) {
-        sBitmapUtils.display(container, uri);
+    public static void display(ImageView container, String uri) {
+//        sBitmapUtils.display(container, uri);
+        Picasso.with(UIUtils.getContext()).load(uri).into(container);
     }
 }

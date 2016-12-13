@@ -20,7 +20,7 @@ import com.victor.vhealth.base.ContentBaseFragment;
 import com.victor.vhealth.domain.ClassifyInfo;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.protocol.ClassifyProtocol;
-import com.victor.vhealth.ui.activity.SearchActivity;
+import com.victor.vhealth.ui.activity.ClassifySearchActivity;
 import com.victor.vhealth.util.UIUtils;
 import com.victor.vhealth.widget.LoadingPager;
 
@@ -98,9 +98,9 @@ public class DrugClassfiyFragment extends ContentBaseFragment implements View.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
             case R.id.gv_drug_classify:
-                Intent intent = new Intent(UIUtils.getContext(), SearchActivity.class);
+                Intent intent = new Intent(UIUtils.getContext(), ClassifySearchActivity.class);
                 intent.putExtra(ContentBaseFragment.DATA_ID, mClassifyInfos.get(position).id);
-                intent.putExtra(SearchActivity.SEARCH_CALSSIFY_TYPE, Constant.URL.MEDICINE_DRUG);
+                intent.putExtra(ClassifySearchActivity.SEARCH_CLASSIFY_TYPE, Constant.URL.MEDICINE_DRUG);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 UIUtils.getContext().startActivity(intent);
                 break;

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/iv_cook_detail"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_cook_detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_cook_detail"
+                android:layout_alignTop="@id/iv_cook_detail"
+                android:paddingTop="5dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="@string/test_tile"/>
+
+            <TextView
+                android:id="@+id/tv_cook_detail_keyword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_cook_detail"
+                android:layout_below="@id/tv_cook_detail_name"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="14sp"
+                android:text="@string/breif_introduce"/>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/background_tab_pressed"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="@string/cook_indroduce"/>
+
+        <TextView
+            android:id="@+id/tv_cook_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            android:text="菜谱介绍"/>
+
+    </LinearLayout>
+</ScrollView>

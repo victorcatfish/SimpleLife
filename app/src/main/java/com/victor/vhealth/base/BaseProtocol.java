@@ -81,7 +81,13 @@ public abstract class BaseProtocol<T> {
 
     private String getDataFromNet(int page) throws HttpException, IOException {
         HttpUtils httpUtils = new HttpUtils();
-        String url = Constant.URL.BASE + getUrlKey();
+        String url = null;
+        String urlKey = getUrlKey();
+        if ("tnfs".equals(urlKey.substring(1, 5))) {
+            url = Constant.URL.PIC_BASE + urlKey;
+        } else {
+            url = Constant.URL.BASE + getUrlKey();
+        }
         RequestParams params = new RequestParams();
         if (page != 0) {
             params.addQueryStringParameter("page", page + "");

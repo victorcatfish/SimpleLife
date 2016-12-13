@@ -3,6 +3,8 @@
           package="com.victor.vhealth">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".global.VHealthApplication"
@@ -13,7 +15,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.SplashActivity">
         </activity>
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,9 +26,11 @@
         <activity android:name=".ui.activity.DetailActivity"/>
         <activity android:name=".ui.activity.MedicineActivity">
         </activity>
-        <activity android:name=".ui.activity.SearchActivity">
+        <activity android:name=".ui.activity.ClassifySearchActivity">
         </activity>
         <activity android:name=".ui.activity.KeywordSearchActivity">
+        </activity>
+        <activity android:name=".ui.activity.PicDetailActivity">
         </activity>
     </application>
 

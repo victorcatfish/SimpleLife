@@ -75,4 +75,6 @@
     <string name="disease_check">检查诊断</string>
     <string name="disease_drug">相关药物</string>
     <string name="disease_care">预防治疗</string>
+    <string name="food_indroduce">食品简介</string>
+    <string name="cook_indroduce">菜谱介绍</string>
 </resources>

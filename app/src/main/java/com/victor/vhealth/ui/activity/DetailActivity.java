@@ -19,8 +19,10 @@ import com.victor.vhealth.ui.fragment.detail.AskDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.BookDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DiseaseDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DrugDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.FoodDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.KnowledgeDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.NewsDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.TopDetailFragment;
 import com.victor.vhealth.util.UIUtils;
 
 /**资讯详情页面
@@ -63,6 +65,12 @@ public class DetailActivity extends AppCompatActivity {
             mToolbar.setTitle("药品信息");
         } else if (mFragment instanceof DiseaseDetailFragment) {
             mToolbar.setTitle("疾病信息");
+        } else if (mFragment instanceof TopDetailFragment) {
+            mToolbar.setTitle("新闻信息");
+        } else if (mFragment instanceof FoodDetailFragment) {
+            mToolbar.setTitle("食品信息");
+        } else if (mFragment instanceof FoodDetailFragment) {
+            mToolbar.setTitle("菜谱信息");
         }
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -1,5 +1,6 @@
 package com.victor.vhealth.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +14,15 @@ import com.victor.vhealth.base.ContentBaseFragment;
 import com.victor.vhealth.factory.CustomFragmentFactory;
 import com.victor.vhealth.base.ClassifySearchBaseFragment;
 
-public class SearchActivity extends AppCompatActivity {
+public class ClassifySearchActivity extends AppCompatActivity {
 
-    public static final String SEARCH_CALSSIFY_TYPE = "search_classify_type";
+    public static final String SEARCH_CLASSIFY_TYPE = "search_classify_type";
+    public static final String SEARCH_CLASSIFY_NAME = "search_classify_name";
 
     @ViewInject(R.id.tool_bar)
     private Toolbar mToolbar;
     private ContentBaseFragment mFragment;
+    private String mKeyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        mToolbar.setTitle("搜索结果");
+        mToolbar.setTitle(mKeyName + "相关疾病");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -40,9 +43,11 @@ public class SearchActivity extends AppCompatActivity {
 
     private void initFragment() {
 
-        String urlKey = getIntent().getStringExtra(SEARCH_CALSSIFY_TYPE);
-        String searchKey = getIntent().getStringExtra(ClassifySearchBaseFragment.SEARCH_CLASSIFY_KEY);
-        int id = getIntent().getIntExtra(ContentBaseFragment.DATA_ID, -1);
+        Intent intent = getIntent();
+        String urlKey = intent.getStringExtra(SEARCH_CLASSIFY_TYPE);
+        String searchKey = intent.getStringExtra(ClassifySearchBaseFragment.SEARCH_CLASSIFY_KEY);
+        mKeyName = intent.getStringExtra(SEARCH_CLASSIFY_NAME);
+        int id = intent.getIntExtra(ContentBaseFragment.DATA_ID, -1);
         mFragment = CustomFragmentFactory.createSearchFragment(urlKey,searchKey, id);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fl_search_content, mFragment);

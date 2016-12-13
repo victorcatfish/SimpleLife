@@ -1,4 +1,4 @@
-package com.victor.vhealth.ui.fragment.health;
+package com.victor.vhealth.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +16,7 @@ import com.victor.vhealth.R;
 import com.victor.vhealth.base.ContentBaseFragment;
 import com.victor.vhealth.domain.ClassifyInfo;
 import com.victor.vhealth.factory.CustomFragmentFactory;
+import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.protocol.ClassifyProtocol;
 import com.victor.vhealth.widget.LoadingPager;
 
@@ -25,7 +26,7 @@ import java.util.List;
 /** 内容分类Fragment
  * Created by Victor on 2016/7/1.
  */
-public class HealthClassifyFragment extends ContentBaseFragment {
+public class ClassifyFragment extends ContentBaseFragment {
 
     public static final String CHANNEL_TAG = "channel_tag";
     public static final String URL_KEY = "url_key";
@@ -113,9 +114,11 @@ public class HealthClassifyFragment extends ContentBaseFragment {
             }
             @Override
             public void onPageSelected(int position) {
+                String key = "abdc";
                 ContentBaseFragment contentFragment = CustomFragmentFactory.
                         createContentFragment(mUrlKey, mClassifyInfos.get(position).id);
-                contentFragment.getLoadingPager().loadData();
+                LoadingPager loadingPager = contentFragment.getLoadingPager();
+                loadingPager.loadData();
             }
 
             @Override
@@ -148,8 +151,13 @@ public class HealthClassifyFragment extends ContentBaseFragment {
         @Override
         public CharSequence getPageTitle(int position) {
             if (mClassifyInfos != null) {
-                String briefName = getClassifyBriefName(mClassifyInfos.get(position).name);
-                return briefName;
+                String title = null;
+                if (Constant.URL.PIC.equals(mUrlKey)) {
+                    title = mClassifyInfos.get(position).name;
+                } else {
+                    title = getClassifyBriefName(mClassifyInfos.get(position).name);
+                }
+                return title;
             }
             return "";
         }

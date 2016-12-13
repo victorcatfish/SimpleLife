@@ -3,15 +3,19 @@ package com.victor.vhealth.factory;
 import android.os.Bundle;
 import android.support.v4.util.SparseArrayCompat;
 
+import com.victor.vhealth.base.ClassifySearchBaseFragment;
 import com.victor.vhealth.base.ContentBaseFragment;
 import com.victor.vhealth.base.KeyWordSearchBaseFragment;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.ui.fragment.detail.AskDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.BookDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.CookDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DiseaseDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DrugDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.FoodDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.KnowledgeDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.NewsDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.TopDetailFragment;
 import com.victor.vhealth.ui.fragment.health.AskFragment;
 import com.victor.vhealth.ui.fragment.health.BookFragment;
 import com.victor.vhealth.ui.fragment.health.KnowledgeFragment;
@@ -22,11 +26,11 @@ import com.victor.vhealth.ui.fragment.life.TopFragment;
 import com.victor.vhealth.ui.fragment.medicine.DiseaseFragment;
 import com.victor.vhealth.ui.fragment.medicine.DrugFragment;
 import com.victor.vhealth.ui.fragment.medicine.MedicineFragment;
+import com.victor.vhealth.ui.fragment.pic.PicFragment;
 import com.victor.vhealth.ui.fragment.search.DiseaseClassifySearchFragment;
 import com.victor.vhealth.ui.fragment.search.DiseaseKeywordSearchFragment;
 import com.victor.vhealth.ui.fragment.search.DrugKeywordSearchFragment;
 import com.victor.vhealth.ui.fragment.search.DrugSearchFragment;
-import com.victor.vhealth.base.ClassifySearchBaseFragment;
 
 /**自定义fragment工厂类
  * Created by Victor on 2016/7/5.
@@ -40,6 +44,7 @@ public class CustomFragmentFactory {
     static SparseArrayCompat<TopFragment> sTopFragments = new SparseArrayCompat<>();
     static SparseArrayCompat<FoodFragment> sFoodFragments = new SparseArrayCompat<>();
     static SparseArrayCompat<CookbookFragment> sCookBookFragments = new SparseArrayCompat<>();
+    static SparseArrayCompat<PicFragment> sPicFragments = new SparseArrayCompat<>();
 
     public static ContentBaseFragment createContentFragment(String key, int id) {
         ContentBaseFragment fragment = null;
@@ -94,8 +99,15 @@ public class CustomFragmentFactory {
                 fragment.setArguments(bundle);
                 sCookBookFragments.put(id, (CookbookFragment) fragment);
             }
+        } else if (key.equals(Constant.URL.PIC)) {
+            fragment = sPicFragments.get(id);
+            if (fragment == null) {
+                fragment = new PicFragment();
+                fragment.setArguments(bundle);
+                sPicFragments.put(id, (PicFragment)fragment);
+            }
         }
-        return fragment;
+            return fragment;
     }
 
     public static ContentBaseFragment createDetailFragment(String key, int id) {
@@ -119,6 +131,15 @@ public class CustomFragmentFactory {
             fragment.setArguments(bundle);
         } else if (key.equals(Constant.URL.MEDICINE_DISEASE)) {
             fragment = new DiseaseDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.LIFE_TOP)) {
+            fragment = new TopDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.LIFE_FOOD)) {
+            fragment = new FoodDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.LIFE_COOKBOOK)) {
+            fragment = new CookDetailFragment();
             fragment.setArguments(bundle);
         }
         return fragment;
