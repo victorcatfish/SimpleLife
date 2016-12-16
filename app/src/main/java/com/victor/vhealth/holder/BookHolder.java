@@ -1,5 +1,6 @@
 package com.victor.vhealth.holder;
 
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,7 +47,7 @@ public class BookHolder extends BaseHolder<BookInfo> {
     protected void refreshView(BookInfo data) {
         mTvName.setText(data.name);
         mTvAuthor.setText(data.author);
-        mTvdes.setText(data.summary);
+        mTvdes.setText(Html.fromHtml(data.summary));
         mTvReadCount.setText(data.count);
         BitmapHelper.display(mivConver, Constant.URL.IMG_BASE + data.img);
 

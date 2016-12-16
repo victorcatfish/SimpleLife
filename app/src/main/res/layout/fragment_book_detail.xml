@@ -142,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="@string/breif_introduce"
+                android:textColor="@color/dark_gray"
                 android:padding="10dp"/>
 
             <TextView
@@ -155,12 +156,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:padding="10dp"
-                android:text="@string/commend"/>
+                android:text="@string/commend"
+                android:textColor="@color/dark_gray"/>
             <TextView
                 android:id="@+id/tv_detail_commend"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textColor="@android:color/darker_gray"/>
         </LinearLayout>
 
     </ScrollView>

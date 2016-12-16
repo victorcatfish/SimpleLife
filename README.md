@@ -12,3 +12,24 @@
 5、健康书籍在线阅读（该部分还暂未实现）
 
 # 项目效果图
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/1.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/2.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/3.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/4.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/5.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/6.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/7.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/8.png)
+![image](https://github.com/victorcatfish/VHealth/raw/master/screenshots/9.png)
+
+#apk下载
+[apk下载](http://download.csdn.net/detail/victor_fang/9712946)
+
+#用到的第三方库
+Xutils
+
+PagerSlidingTabStrip
+
+Picasso
+
+Gson
