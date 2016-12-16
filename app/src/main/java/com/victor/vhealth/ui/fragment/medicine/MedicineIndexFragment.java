@@ -13,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -34,6 +33,7 @@ import com.victor.vhealth.protocol.DrugProtocol;
 import com.victor.vhealth.protocol.HospitalProtocol;
 import com.victor.vhealth.protocol.PharmacyProtocol;
 import com.victor.vhealth.ui.activity.DetailActivity;
+import com.victor.vhealth.ui.activity.MapActivity;
 import com.victor.vhealth.ui.activity.MedicineActivity;
 import com.victor.vhealth.util.BitmapHelper;
 import com.victor.vhealth.util.UIUtils;
@@ -62,7 +62,7 @@ public class MedicineIndexFragment extends Fragment implements View.OnClickListe
     private GridView mGvDrug;
     @ViewInject(R.id.gv_disease)
     private GridView mGvDisease;
-    @ViewInject(R.id.gv_hospital)
+    @ViewInject(R.id.lv_hospital)
     private GridView mGvHospital;
     @ViewInject(R.id.gv_pharmacy)
     private GridView mGvPharmacy;
@@ -275,13 +275,16 @@ public class MedicineIndexFragment extends Fragment implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.tv_hospital_info_more:
-                Toast.makeText(getContext(), "更多医院", Toast.LENGTH_SHORT).show();
+                intent.putExtra(MedicineActivity.MEDICINE_CALSSIFY_KEY, Constant.URL.MEDICINE_HOSPTIAL);
+                startActivity(intent);
                 break;
             case R.id.tv_pharmacy_info_more:
-                Toast.makeText(getContext(), "更多药店", Toast.LENGTH_SHORT).show();
+                intent.putExtra(MedicineActivity.MEDICINE_CALSSIFY_KEY, Constant.URL.MEDICINE_PHARMACY);
+                startActivity(intent);
                 break;
             case R.id.tv_company_info_more:
-                Toast.makeText(getContext(), "更多药企", Toast.LENGTH_SHORT).show();
+                intent.putExtra(MedicineActivity.MEDICINE_CALSSIFY_KEY, Constant.URL.MEDICINE_COMPANY);
+                startActivity(intent);
                 break;
         }
     }
@@ -291,7 +294,7 @@ public class MedicineIndexFragment extends Fragment implements View.OnClickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Intent intent = new Intent(UIUtils.getContext(), DetailActivity.class);
-
+        Intent intentToMap = new Intent(UIUtils.getContext(), MapActivity.class);
         switch (parent.getId()) {
             case R.id.gv_drug:
                 int idd = (int) mDrugInfos.get(position).id;
@@ -301,17 +304,40 @@ public class MedicineIndexFragment extends Fragment implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.gv_disease:
-
                 int diseaseId = (int) mDiseaseInfos.get(position).id;
                 intent.putExtra(ContentBaseFragment.DATA_ID, diseaseId);
                 intent.putExtra(DetailActivity.CLASSIFY_KEY, Constant.URL.MEDICINE_DISEASE);
                 startActivity(intent);
                 break;
-            case R.id.gv_hospital:
+            case R.id.lv_hospital:
+                HospitalInfo info = mHospitalInfos.get(position);
+                int hospitalId = (int) info.id;
+                intentToMap.putExtra(MapActivity.X_COORDINATE, info.x);
+                intentToMap.putExtra(MapActivity.Y_COORDINATE, info.y);
+                intentToMap.putExtra(MapActivity.HOSPITAL_NAME, info.name);
+                intentToMap.putExtra(ContentBaseFragment.DATA_ID, hospitalId);
+                intentToMap.putExtra(MapActivity.MAP_CLASSIFY_KEY, Constant.URL.MEDICINE_HOSPTIAL);
+                startActivity(intentToMap);
                 break;
             case R.id.gv_pharmacy:
+                PharmacyInfo pharmacyInfo = mPharmacyInfos.get(position);
+                int pharmacyId = (int) pharmacyInfo.id;
+                intentToMap.putExtra(MapActivity.X_COORDINATE, pharmacyInfo.x);
+                intentToMap.putExtra(MapActivity.Y_COORDINATE, pharmacyInfo.y);
+                intentToMap.putExtra(MapActivity.HOSPITAL_NAME, pharmacyInfo.name);
+                intentToMap.putExtra(ContentBaseFragment.DATA_ID, pharmacyId);
+                intentToMap.putExtra(MapActivity.MAP_CLASSIFY_KEY, Constant.URL.MEDICINE_PHARMACY);
+                startActivity(intentToMap);
                 break;
             case R.id.gv_company:
+                CompanyInfo companyInfo = mCompanyInfos.get(position);
+                int companyId = (int) companyInfo.id;
+                intentToMap.putExtra(MapActivity.X_COORDINATE, companyInfo.x);
+                intentToMap.putExtra(MapActivity.Y_COORDINATE, companyInfo.y);
+                intentToMap.putExtra(MapActivity.HOSPITAL_NAME, companyInfo.name);
+                intentToMap.putExtra(ContentBaseFragment.DATA_ID, companyId);
+                intentToMap.putExtra(MapActivity.MAP_CLASSIFY_KEY, Constant.URL.MEDICINE_COMPANY);
+                startActivity(intentToMap);
                 break;
         }
     }

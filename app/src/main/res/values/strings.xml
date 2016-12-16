@@ -77,4 +77,7 @@
     <string name="disease_care">预防治疗</string>
     <string name="food_indroduce">食品简介</string>
     <string name="cook_indroduce">菜谱介绍</string>
+    <string name="hospital_introduce">医院简介</string>
+    <string name="pharmacy_introduce">药店简介</string>
+    <string name="company_introduce">药企信息</string>
 </resources>

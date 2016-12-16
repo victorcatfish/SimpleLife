@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Process;
 
+import com.baidu.mapapi.SDKInitializer;
+
 /**
  * Created by Victor on 2016/7/4.
  */
@@ -29,8 +31,8 @@ public class VHealthApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         mContext =  getApplicationContext();
+        SDKInitializer.initialize(mContext);
         mHandler = new Handler();
         // onCreate方法运行在主线程，所以得到的id是主线程id
         mMainThreadId = Process.myTid();

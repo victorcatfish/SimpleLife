@@ -9,12 +9,15 @@ import com.victor.vhealth.base.KeyWordSearchBaseFragment;
 import com.victor.vhealth.global.Constant;
 import com.victor.vhealth.ui.fragment.detail.AskDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.BookDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.CompanyDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.CookDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DiseaseDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.DrugDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.FoodDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.HospitalDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.KnowledgeDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.NewsDetailFragment;
+import com.victor.vhealth.ui.fragment.detail.PharmacyDetailFragment;
 import com.victor.vhealth.ui.fragment.detail.TopDetailFragment;
 import com.victor.vhealth.ui.fragment.health.AskFragment;
 import com.victor.vhealth.ui.fragment.health.BookFragment;
@@ -23,9 +26,12 @@ import com.victor.vhealth.ui.fragment.health.NewsFragment;
 import com.victor.vhealth.ui.fragment.life.CookbookFragment;
 import com.victor.vhealth.ui.fragment.life.FoodFragment;
 import com.victor.vhealth.ui.fragment.life.TopFragment;
+import com.victor.vhealth.ui.fragment.medicine.CompanyFragment;
 import com.victor.vhealth.ui.fragment.medicine.DiseaseFragment;
 import com.victor.vhealth.ui.fragment.medicine.DrugFragment;
+import com.victor.vhealth.ui.fragment.medicine.HospitalFragment;
 import com.victor.vhealth.ui.fragment.medicine.MedicineFragment;
+import com.victor.vhealth.ui.fragment.medicine.PharmacyFragment;
 import com.victor.vhealth.ui.fragment.pic.PicFragment;
 import com.victor.vhealth.ui.fragment.search.DiseaseClassifySearchFragment;
 import com.victor.vhealth.ui.fragment.search.DiseaseKeywordSearchFragment;
@@ -141,6 +147,15 @@ public class CustomFragmentFactory {
         } else if (key.equals(Constant.URL.LIFE_COOKBOOK)) {
             fragment = new CookDetailFragment();
             fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.MEDICINE_HOSPTIAL)) {
+            fragment = new HospitalDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.MEDICINE_PHARMACY)) {
+            fragment = new PharmacyDetailFragment();
+            fragment.setArguments(bundle);
+        } else if (key.equals(Constant.URL.MEDICINE_COMPANY)) {
+            fragment = new CompanyDetailFragment();
+            fragment.setArguments(bundle);
         }
         return fragment;
     }
@@ -152,6 +167,12 @@ public class CustomFragmentFactory {
             fragment = new DrugFragment();
         } else if (key.equals(Constant.URL.MEDICINE_DISEASE)) {
             fragment = new DiseaseFragment();
+        } else if (key.equals(Constant.URL.MEDICINE_HOSPTIAL)) {
+            fragment = new HospitalFragment();
+        } else if (key.equals(Constant.URL.MEDICINE_PHARMACY)) {
+            fragment = new PharmacyFragment();
+        } else if (key.equals(Constant.URL.MEDICINE_COMPANY)) {
+            fragment = new CompanyFragment();
         }
 
         return fragment;

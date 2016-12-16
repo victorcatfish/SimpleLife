@@ -162,7 +162,7 @@
                     </RelativeLayout>
 
                     <com.victor.vhealth.widget.MyGridView
-                        android:id="@+id/gv_hospital"
+                        android:id="@+id/lv_hospital"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:columnWidth="80dp"

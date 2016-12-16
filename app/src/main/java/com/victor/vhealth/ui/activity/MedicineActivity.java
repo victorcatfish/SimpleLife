@@ -12,9 +12,12 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.victor.vhealth.R;
 import com.victor.vhealth.factory.CustomFragmentFactory;
+import com.victor.vhealth.ui.fragment.medicine.CompanyFragment;
 import com.victor.vhealth.ui.fragment.medicine.DiseaseFragment;
 import com.victor.vhealth.ui.fragment.medicine.DrugFragment;
+import com.victor.vhealth.ui.fragment.medicine.HospitalFragment;
 import com.victor.vhealth.ui.fragment.medicine.MedicineFragment;
+import com.victor.vhealth.ui.fragment.medicine.PharmacyFragment;
 
 /**
  * 医疗列表activity
@@ -49,6 +52,12 @@ public class MedicineActivity extends AppCompatActivity {
             mToolbar.setTitle("药品");
         } else if ( mFragment instanceof DiseaseFragment) {
             mToolbar.setTitle("疾病");
+        } else if ( mFragment instanceof HospitalFragment) {
+            mToolbar.setTitle("医院门诊");
+        } else if ( mFragment instanceof PharmacyFragment) {
+            mToolbar.setTitle("药店药房");
+        } else if ( mFragment instanceof CompanyFragment) {
+            mToolbar.setTitle("药厂药企");
         }
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -29,6 +29,9 @@ public class CompanyProtocol extends BaseProtocol<List<CompanyInfo>> {
 
     @Override
     protected Map<String, String> getExtraParmas() {
+        if (mClassifyId == -1) {
+            return null;
+        }
         Map<String, String> params = new HashMap<>();
         params.put("id", mClassifyId + "");
         return params;
